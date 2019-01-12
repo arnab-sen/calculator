@@ -2,7 +2,9 @@ function operate (a, b, operator) {
   operations = {"+" : () => a + b,
                 "-" : () => a - b,
                 "x" : () => a * b,
-                "÷" : () => {return (b == 0) ? "Infinity" : a / b;}};
+                "÷" : () => {return (b == 0) ? "Infinity" : a / b;},
+                "^" : () => a ** b,
+                "√" : () => b ** (1/a)};
   
   return operations[operator]();
 }
@@ -41,7 +43,7 @@ function setupButtons() {
 
   otherButtons.appendChild(backspaceButton);
   
-  buttonValues = ["+", "-", "exp", "x", "÷", "√"];
+  buttonValues = ["+", "-", "^", "x", "÷", "√"];
   for (var i = 0; i < buttonValues.length; i++) {
     button = createButton(`button${buttonValues[i]}`, buttonValues[i]);
     button.addEventListener("click", e => {expr.push(" " + e.target.textContent + " "); 
@@ -88,7 +90,7 @@ function updateScreen(expression, screenText) {
 function infixToPostfix(infix) {
   var postfix = [];
   var stack = [];
-  var operators = ["+", "-", "x", "÷"];
+  var operators = ["+", "-", "x", "÷", "^", "√"];
   var precedence = {"+" : 0, "-" : 0, "x" : 1, "÷" : 1};
   
   for (var i = 0; i < infix.length; i++) {
@@ -116,7 +118,7 @@ function infixToPostfix(infix) {
 function postfixCalculation(postfix) {
   var operand1, operand2, result;
   var stack = [];
-  var operators = ["+", "-", "x", "÷"];
+  var operators = ["+", "-", "x", "÷", "^", "√"];
   for (var i = 0; i < postfix.length; i++) {
     if (operators.includes(postfix[i])) {
       operand2 = stack.pop();
