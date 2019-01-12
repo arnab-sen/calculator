@@ -1,0 +1,48 @@
+.calculator {
+  display: block;
+  margin-left : auto;
+  margin-right: auto;
+  background-color: black;
+  width: 560px;
+  height: 500px;
+  border-radius: 20px;
+}
+
+.screen {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: grey;
+  width: 500px;
+  height: 70px;
+  top: 15px;
+  border-radius: 10px;
+}
+
+.screen .text {
+  padding: 10px;
+  font-size: 40px;
+  font-family: sans-serif;
+  text-align: right;
+}
+
+.numpad {
+  display: grid;
+  position: relative;
+  top: 30px;
+  left: 30px;
+  width: 250px;
+  height: 200px;
+  grid-template-columns: repeat(3, 80px);
+}
+
+.other-buttons {
+  display: grid;
+  position: relative;
+  top: -170px;
+  left: 290px;
+  width: 250px;
+  height: 200px;
+  grid-template-columns: repeat(3, 80px);
+}
